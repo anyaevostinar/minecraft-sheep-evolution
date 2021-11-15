@@ -23,6 +23,7 @@ public abstract class EscapeFromWolfMixin extends AnimalEntity {
     }
 
     @Inject(method="initGoals", at = @At("HEAD"))
+    //pass in CallbackInfo here, since the function "initGoals" in SheepEntity is a void type.
     public void initGoals(CallbackInfo info) {
         System.out.println("init sheep Goals");
         //lower number have more priority. So 0 represents the highest priority
