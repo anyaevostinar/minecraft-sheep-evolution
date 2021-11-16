@@ -1,7 +1,7 @@
 # Evolution Mod
 This is a mod for the Java version of Minecraft. It enables the evolution of Minecraft sheep via natual selection using an evolutionary algorithm.
 To accomplish this evolution, we modified the color, reproduction, and life cycle of sheep, as well as the hunting behavior and the reproduction of wolves.
-
+//change to third person. //provide the tutorial link for 69 videos.
 ![run_build.gradle](images/Example.png)
 ## Using the Mod
 Information about how to just download and use the mod will be here
@@ -108,7 +108,7 @@ The attack() will detect if the target is a sheep, then kill the sheep by chance
 ### WolfAttackSheepGoalMixin
 We use this mixin to add attackSheepGoal to WolfEntity by modifying its initGoals() function.
 
-###EscapeFromWolfGoal
+### EscapeFromWolfGoal
 This goal is started when the sheep is being attacked by a wolf.
 
 ### EscapeFromWOlfMixin
