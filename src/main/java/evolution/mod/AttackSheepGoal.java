@@ -1,6 +1,5 @@
-package eliarbogast.evolution.mod;
+package evolution.mod;
 
-import eliarbogast.evolution.mod.SheepEntityExt;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.ai.goal.Goal;

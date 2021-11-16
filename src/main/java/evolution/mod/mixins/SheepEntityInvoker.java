@@ -1,4 +1,4 @@
-package eliarbogast.evolution.mod.mixins;
+package evolution.mod.mixins;
 
 import net.minecraft.entity.passive.SheepEntity;
 import net.minecraft.util.DyeColor;

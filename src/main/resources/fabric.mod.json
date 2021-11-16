@@ -20,7 +20,7 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "eliarbogast.evolution.mod.Evolution"
+      "evolution.mod.Evolution"
     ]
   },
   "mixins": [

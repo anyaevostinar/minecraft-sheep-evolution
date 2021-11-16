@@ -1,7 +1,7 @@
 {
   "required": true,
   "minVersion": "0.8",
-  "package": "eliarbogast.evolution.mod.mixins",
+  "package": "evolution.mod.mixins",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
   ],

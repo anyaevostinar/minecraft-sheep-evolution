@@ -1,4 +1,4 @@
-package eliarbogast.evolution.mod;
+package evolution.mod;
 
 import net.minecraft.block.MaterialColor;
 /**

@@ -1,9 +1,8 @@
 
-package eliarbogast.evolution.mod.mixins;
+package evolution.mod.mixins;
 
 
-        import eliarbogast.evolution.mod.EscapeFromWolfGoal;
-        import eliarbogast.evolution.mod.SheepEntityExt;
+        import evolution.mod.EscapeFromWolfGoal;
         import net.minecraft.entity.EntityType;
         import net.minecraft.entity.passive.AnimalEntity;
         import net.minecraft.entity.passive.SheepEntity;

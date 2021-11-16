@@ -1,4 +1,4 @@
-package eliarbogast.evolution.mod.mixins;
+package evolution.mod.mixins;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.DyeItem;

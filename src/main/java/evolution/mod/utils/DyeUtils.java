@@ -1,4 +1,4 @@
-package eliarbogast.evolution.mod.utils;
+package evolution.mod.utils;
 
 import java.awt.*;
 import java.util.Map;

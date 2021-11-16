@@ -1,4 +1,4 @@
-package eliarbogast.evolution.mod;
+package evolution.mod;
 
 import java.util.EnumSet;
 import net.minecraft.entity.Entity;
