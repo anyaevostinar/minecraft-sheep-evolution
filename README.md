@@ -73,6 +73,13 @@ If you are new to Mixins, this is a helpful place to start: https://fabricmc.net
 
 ### SheepEntityInvoker
 We need this Invoker to call a function that inside SheepEntity. SheepEntityInvoker can invoke getColor() inside SheepEntity, and by implement the interface, SheepLifeCycleMixin can call the getColor() function in SheepEntity.
+For example:
+![color_ring](images/invoker_example.png)
+
+### SheepEntityExt
+I created this interface because I need to call these functions I wrote.
+For example, this is how I call getSurroundingColor() in SheepLifeCycleMixin. 'this' is a SheepEntity.
+![color_ring](images/Ext_example.png)
 
 ### SheepLifeCycleMixin
 The `SheepLifeCycleMixin` class has the functions:
@@ -96,6 +103,15 @@ By modifying the meleeAttackGoal in wolf Class, I created the attackSheepGoal. I
 The attack() will detect if the target is a sheep, then kill the sheep by chance based on the difference. What's more, if the wolf failed to attack the sheep more than 10 times, it will be dead.
 (more details see the comments of the code).
 
+### WolfAttackSheepGoalMixin
+We use this mixin to add attackSheepGoal to WolfEntity by modifying its initGoals() function.
+
+###EscapeFromWolfGoal
+This goal is started when the sheep is being attacked by a wolf.
+
+### EscapeFromWOlfMixin
+We use this mixin to increase the speed of a sheep escaping from a wolf by using EscapeFromWolfGoal. Therefore, we allow sheep to escape from a wolf after being attacked.
+
 ### GrassReproduceMixin
 In order to simulate the "mutate" process in the natural world, we created GrassReproduceMixin and SheepColorMixin, which let sheep reproduce little sheep after eating grass and give them
 child different color.
@@ -109,6 +125,8 @@ Inside SheepColorMixin, we mutate the color of little sheep. The color of little
 ### AttackSheepAndBreedMixin
 Moreover, inside AttackSheepAndBreedMixin, we modified the attack() function, and then we let wolves produce child after killing certain number of sheep. However, by using this way, wolf produce offspring asexually. The reason why it's hard to use
 similar algorithm as we did in producing sheep is that wolf 1,need to be tamed to producing sheep, and 2, need food like meet to producing sheep. And if the wolf is tamed, it will not attack sheep anymore.
+
+
 
 
 
