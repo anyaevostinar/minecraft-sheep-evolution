@@ -1,6 +1,6 @@
 # Evolution Mod
 This is a mod for the Java version of Minecraft. It enables the evolution of Minecraft sheep via natual selection using an evolutionary algorithm.
-To accomplish this evolution, we modified the color, reproduction, and life cycle of sheep, as well as the hunting behavior of wolves.
+To accomplish this evolution, we modified the color, reproduction, and life cycle of sheep, as well as the hunting behavior and the reproduction of wolves.
 
 ![run_build.gradle](images/Example.png)
 ## Using the Mod
@@ -13,16 +13,16 @@ For this project, we want the color of the sheep's wool to impact predation by w
 This mod implements all required components of evolution via natural selection, leading to actual evolutionary dynamics.
 
 ### Variation
-We mutate the color of the offsprings of the sheep based on its parents. The color of small sheep is generated based on the mean of its parents add a random number. 
+We mutate the color of the offsprings of the sheep based on its parents. The color of small sheep is the average of its parents' color, or slightly different from it. 
 (TODO: Explain how variation is achieved in the mod; should discuss both how the mutations are introduced and how the existing mixing of parent colors is used)
 
 ### Inheritance
 After a sheep is grown up and eat more than 2 grasses, it will be set as "in love", which means that if two "inLove" sheep met, they can reproduce offspring.
-When produce an offspring, we generate the color of small sheep based on the mean color of its parents, so that the offspring is likely to have a color that similar to their parents.
+When produce an offspring, we generate the color of small sheep based on the average color of its parents, so that the offspring is likely to have a color that similar to their parents.
 (TODO: Explain how sheep now reproduce after eating enough grass and make an offspring that is likely to be similar in color
 
 ### Competition
-We imitate the scenario that the more the skin of sheep similar to the environment, the more likely the wolves can detect the sheep, and then eat them.
+We want to imitate the scenario that the more the skin of sheep similar to the environment, the more likely the wolves can detect the sheep, and then eat them.
 Therefore, We manipulate the chance of a wolf successfully attacks a sheep based on the similarity of the sheep skin and environment. Also, in order to simulate the competition between wolves, we let wolves die if it failed to attack sheep several (still adjusting) times. 
 (TODO: Explain how wolves are more likely to target and kill sheep that stand out from their surroundings, leading to differential survival of sheep based on their wool color)
 
@@ -67,9 +67,7 @@ For example,initGoals() in SheepEntity is a void type:
 
 ## Q&A
 
-### Mixins
-This mod uses Mixins to accomplish it's changes.
-If you are new to Mixins, this is a helpful place to start: https://fabricmc.net/wiki/tutorial:mixin_introduction
+## Interfaces
 
 ### SheepEntityInvoker
 We need this Invoker to call a function that inside SheepEntity. SheepEntityInvoker can invoke getColor() inside SheepEntity, and by implement the interface, SheepLifeCycleMixin can call the getColor() function in SheepEntity.
@@ -80,6 +78,10 @@ For example:
 I created this interface because I need to call these functions I wrote.
 For example, this is how I call getSurroundingColor() in SheepLifeCycleMixin. 'this' is a SheepEntity.
 ![color_ring](images/Ext_example.png)
+
+## Mixins and Goals
+This mod uses Mixins to accomplish its changes.
+If you are new to Mixins, this is a helpful place to start: https://fabricmc.net/wiki/tutorial:mixin_introduction
 
 ### SheepLifeCycleMixin
 The `SheepLifeCycleMixin` class has the functions:
@@ -126,7 +128,8 @@ Inside SheepColorMixin, we mutate the color of little sheep. The color of little
 Moreover, inside AttackSheepAndBreedMixin, we modified the attack() function, and then we let wolves produce child after killing certain number of sheep. However, by using this way, wolf produce offspring asexually. The reason why it's hard to use
 similar algorithm as we did in producing sheep is that wolf 1,need to be tamed to producing sheep, and 2, need food like meet to producing sheep. And if the wolf is tamed, it will not attack sheep anymore.
 
-
+### AngerTimeMixin
+This mixin is not working yet. The aim for creating this mixin is that we want the wolves be angry all the time, so that it can search and always attack sheep. 
 
 
 
