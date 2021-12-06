@@ -14,7 +14,8 @@
     "WolfAttackSheepGoalMixin",
     "EscapeFromWolfMixin",
     "AngerTimeMixin",
-    "AttackSheepAndBreedMixin"
+    "AttackSheepAndBreedMixin",
+    "AnimalAmountMixin"
   ],
   "injectors": {
     "defaultRequire": 1

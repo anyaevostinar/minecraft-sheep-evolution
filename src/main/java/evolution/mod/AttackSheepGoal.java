@@ -127,17 +127,17 @@ public class AttackSheepGoal extends Goal {
         double difference = 1;
         //this means the wolf encountered a sheep
         if(target instanceof SheepEntity){
-            System.out.println("found an sheep entity");
+            //System.out.println("found an sheep entity");
             SheepEntityExt sheep = (SheepEntityExt)target;
             difference = sheep.getDifference() * 2; //difference can be 0 - 4/3
-            System.out.println("previous SquaredMaxAttackDistance is: " + d);
-            System.out.println("getSquaredMaxAttackDistance is: " + d);
+            //System.out.println("previous SquaredMaxAttackDistance is: " + d);
+            //System.out.println("getSquaredMaxAttackDistance is: " + d);
         }
         if (squaredDistance <= d && this.field_24667 <= 0) {
             this.method_28346();
             this.mob.swingHand(Hand.MAIN_HAND);
             if(Math.random() <= difference) {
-                System.out.println("attacked the sheep.");
+                //System.out.println("attacked the sheep.");
                 this.mob.tryAttack(target);
                 //change an attacking target.
                 this.mob.getNavigation().stop();
@@ -149,8 +149,11 @@ public class AttackSheepGoal extends Goal {
                 if(failAttackCount > 3){
                     this.mob.onDeath(DamageSource.OUT_OF_WORLD);
                     System.out.println("wolf dead.");
+                    //decrement the number of wolf
+                    ((WorldExt)this.mob.world).addWolf(-1);
+                    ((WorldExt)this.mob.world).printAmount();
                 }
-                System.out.println("didn't attack sheep.");
+                //System.out.println("didn't attack sheep.");
             }
         }
 

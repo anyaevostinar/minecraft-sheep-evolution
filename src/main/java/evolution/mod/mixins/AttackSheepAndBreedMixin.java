@@ -1,5 +1,6 @@
 package evolution.mod.mixins;
 
+import evolution.mod.WorldExt;
 import net.minecraft.advancement.criterion.Criteria;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityType;
@@ -21,7 +22,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
  * @author Silas Zhao
  */
 @Mixin(WolfEntity.class)
-public abstract class AttackSheepAndBreedMixin extends AnimalEntity {
+public abstract class AttackSheepAndBreedMixin extends AnimalEntity implements WorldExt {
     int killSheepCount = 0;
     protected AttackSheepAndBreedMixin(EntityType<? extends AnimalEntity> entityType, World world) {
         super(entityType, world);
@@ -30,17 +31,20 @@ public abstract class AttackSheepAndBreedMixin extends AnimalEntity {
     @Inject(method="tryAttack", at = @At("TAIL"))
     //tryAttack in wolfEntity returns a boolean, so include CallbackInfoReturnable<Boolean> as one of its parameters.
     public void tryAttack(Entity target,  CallbackInfoReturnable<Boolean> cir) {
-        System.out.println("try attack!");
+        //System.out.println("try attack!");
         if(target instanceof SheepEntity) {
-            System.out.println("target is a sheep");
+            //System.out.println("target is a sheep");
             SheepEntity sheep = (SheepEntity) target;
-            if (sheep.getHealth() < 1) {
+            if (sheep.getHealth() < 0) {
                 System.out.println("kill a sheep!");
                 killSheepCount++;
+                ((WorldExt)world).addSheep(-1);
+                ((WorldExt)world).printAmount();
             }
         }
         if(killSheepCount > 2){
-            System.out.println("try to bread!");
+            System.out.println("bread!");
+
             //update kill count
             killSheepCount = 0;
             //Currently asexual because a wolf want to reproduce offspring natually needs 1, is tamed, 2 have enough meet, and 3 is in love(loveTick > 0).
